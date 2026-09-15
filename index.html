@@ -196,6 +196,16 @@
     .slide { min-height: auto; page-break-after: always; border-bottom: none; }
     .counter, .hint { display: none; }
   }
+  ol.etapas { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .etapa { background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 1.25rem 1.3rem; display: flex; flex-direction: column; }
+  .etapa.live { background: var(--accent-soft); border-color: var(--accent); }
+  .etapa h3 { margin: 0.35rem 0 0.1rem; font-size: 1.02rem; font-weight: 700; line-height: 1.25; }
+  .etapa .when { margin: 0 0 0.7rem; font-size: 0.82rem; color: var(--ink-3); }
+  .etapa ul { margin: 0; padding-left: 1.05rem; font-size: 0.88rem; color: var(--ink-2); line-height: 1.45; }
+  .etapa ul li + li { margin-top: 0.35rem; }
+  .etapa .deliver { margin: auto 0 0; padding-top: 0.7rem; border-top: 1px solid var(--hairline); font-size: 0.82rem; color: var(--ink-2); line-height: 1.4; }
+  .etapa.live .deliver { border-top-color: var(--accent); }
+  .etapa .deliver strong { color: var(--ink); font-weight: 600; }
 </style>
 
 <!-- 1 · Portada -->
@@ -370,6 +380,61 @@
       <li><strong>Si demuestra valor:</strong> piloto operacional prospectivo en la siguiente temporada, y de ahí a integración con sus sistemas.</li>
     </ul>
     <p class="foot-note">Los datos públicos de CONAF e IDE Minagri permiten iniciar de inmediato; los datos internos de ARAUCO definen la calidad final.</p>
+  </div>
+</section>
+
+<!-- 6b · Proyecto completo -->
+<section class="slide" id="s6b">
+  <div class="slide-inner">
+    <p class="eyebrow">El proyecto completo</p>
+    <h2>Así se vería el proyecto completo: 12 meses, una temporada en vivo</h2>
+    <p class="lede">Cuatro etapas encadenadas: primero calibrar con sus datos, luego pronosticar la temporada 2026–27 en vivo junto a la Central de Protección, medir lo que pasó y, con esa evidencia, decidir el escalamiento a todo el patrimonio.</p>
+    <ol class="etapas">
+      <li class="etapa">
+        <span class="tag">Etapa 1 · meses 1–3</span>
+        <h3>Fundación con datos de ARAUCO</h3>
+        <p class="when">oct – dic 2026</p>
+        <ul>
+          <li>Ingesta y control de calidad de sus estaciones y catálogo de incendios (bajo NDA).</li>
+          <li>Recalibración por zona; 2–3 zonas piloto definidas en conjunto.</li>
+          <li>Talleres con la Central de Protección: umbrales ligados a decisiones y costos.</li>
+        </ul>
+        <p class="deliver"><strong>Entregables:</strong> modelo calibrado multi-zona · línea base retrospectiva vs. índices actuales · protocolo del piloto</p>
+      </li>
+      <li class="etapa live">
+        <span class="tag">Etapa 2 · meses 3–8</span>
+        <h3>Temporada en vivo</h3>
+        <p class="when">nov 2026 – abr 2027</p>
+        <ul>
+          <li>FPI diario a 48 h y proyección a 7 días con ensembles WeatherNext 2.</li>
+          <li>Entrega cada mañana: correo, tablero web o API, según prefiera la operación.</li>
+          <li>Bitácora de decisiones con y sin la señal; seguimiento quincenal.</li>
+        </ul>
+        <p class="deliver"><strong>Entregables:</strong> servicio operativo continuo · bitácora de pronósticos y verificación en tiempo real</p>
+      </li>
+      <li class="etapa">
+        <span class="tag">Etapa 3 · meses 8–10</span>
+        <h3>Evaluación post-temporada</h3>
+        <p class="when">may – jun 2027</p>
+        <ul>
+          <li>Verificación contra lo ocurrido: anticipación ganada, falsas alarmas, discriminación, calibración.</li>
+          <li>Valor Económico Potencial (PEV) en moneda local, sobre sus costos de decisión.</li>
+        </ul>
+        <p class="deliver"><strong>Entregables:</strong> informe técnico · resumen ejecutivo para gerencia</p>
+      </li>
+      <li class="etapa">
+        <span class="tag">Etapa 4 · meses 10–12</span>
+        <h3>Plan de escalamiento</h3>
+        <p class="when">jul – sep 2027</p>
+        <ul>
+          <li>Roadmap de despliegue a todo el patrimonio en Chile.</li>
+          <li>Requisitos de integración con los sistemas de la Central de Protección.</li>
+          <li>Propuesta de licencia operacional para la temporada 2027–28.</li>
+        </ul>
+        <p class="deliver"><strong>Entregables:</strong> plan de escalamiento · especificación de integración · propuesta de continuidad</p>
+      </li>
+    </ol>
+    <p class="foot-note">Gobernanza: revisión formal y acta de conformidad al cierre de cada etapa; reuniones quincenales durante la temporada en vivo; contraparte única por cada lado. La Fase 0 de la lámina anterior es el arranque de la Etapa 1.</p>
   </div>
 </section>
 
