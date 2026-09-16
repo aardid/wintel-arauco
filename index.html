@@ -206,9 +206,10 @@
   .etapa .deliver { margin: auto 0 0; padding-top: 0.7rem; border-top: 1px solid var(--hairline); font-size: 0.82rem; color: var(--ink-2); line-height: 1.4; }
   .etapa.live .deliver { border-top-color: var(--accent); }
   .etapa .deliver strong { color: var(--ink); font-weight: 600; }
-  .datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .datos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 2rem; }
   .datos .col { border: 1px solid var(--hairline); border-radius: 10px; padding: 1.25rem 1.3rem; background: var(--surface); }
   .datos .col.pub { background: var(--accent-soft); border-color: var(--accent); }
+  .datos .col.e1 { border-color: var(--hairline); }
   .datos .col.int { background: var(--ink); border-color: var(--ink); color: #e8e3dc; }
   .datos h3 { margin: 0 0 0.35rem; font-size: 1.02rem; font-weight: 700; }
   .datos .col.pub h3 { color: var(--accent-ink); } .datos .col.int h3 { color: #fff; }
@@ -454,28 +455,35 @@
   <div class="slide-inner">
     <p class="eyebrow">Los datos</p>
     <h2>La ocurrencia humana se predice con capas humanas</h2>
-    <p class="lede">Casi todas las capas que faltan ya existen y son públicas en Chile. Las que no, las tiene ARAUCO. Con el catálogo de igniciones por causa, el modelo deja de ser uno solo y pasa a ser uno por causa.</p>
+    <p class="lede">Casi todas las capas que faltan ya existen. Las públicas y estáticas entran antes de octubre, como quedó comprometido; la actividad humana dinámica se construye dentro del proyecto, en la Etapa 1. Con el catálogo de igniciones por causa, el modelo deja de ser uno solo y pasa a ser uno por causa.</p>
     <div class="datos">
       <div class="col">
         <h3>En el prototipo hoy</h3><div class="bar"></div>
         <ul>
           <li>Meteorología de reanálisis (NASA POWER, ERA5)</li>
           <li>Detecciones satelitales VIIRS 2012–2024</li>
-          <li>Ocurrencia histórica por comuna</li>
-          <li>Actividad reciente propia y de comunas vecinas</li>
+          <li>Ocurrencia histórica y actividad reciente por comuna</li>
           <li>Calendario</li>
         </ul>
       </div>
       <div class="col pub">
-        <h3>Públicos, próximas semanas</h3><div class="bar"></div>
+        <h3>Antes de octubre, público</h3><div class="bar"></div>
         <ul>
           <li>Catastro de vegetación CONAF 2023</li>
           <li>Caminos, población a 100 m, luces nocturnas, interfaz urbano-rural</li>
           <li>Líneas de transmisión eléctrica (IDE Energía)</li>
-          <li>Conteos de tránsito (Vialidad) y visitantes a parques</li>
-          <li>Avisos de quema controlada (CONAF)</li>
           <li>Catálogo CONAF de igniciones con causa, 2002–2020</li>
-          <li>Estaciones Agroclima y humedad de suelo</li>
+          <li>Estaciones Agroclima</li>
+        </ul>
+      </div>
+      <div class="col e1">
+        <h3>Etapa 1 del proyecto: la capa humana dinámica</h3><div class="bar"></div>
+        <ul>
+          <li>Conteos de tránsito (Vialidad MOP)</li>
+          <li>Visitantes a parques y calendario turístico</li>
+          <li>Avisos de quema controlada (CONAF)</li>
+          <li>Movilidad de telefonía (Entel Ocean, Telefónica) por convenio</li>
+          <li>Agroclima automatizado en tiempo real</li>
         </ul>
       </div>
       <div class="col int">
@@ -484,13 +492,12 @@
           <li>Catálogo interno de igniciones con causa y coordenadas</li>
           <li>Rodales, faenas y calendario de cosecha</li>
           <li>Red de distribución eléctrica</li>
-          <li>Movilidad de telefonía (Entel Ocean, Telefónica) por convenio</li>
           <li>Bitácora de decisiones de la Central</li>
           <li>WeatherNext 2: de mañana a 3 días</li>
         </ul>
       </div>
     </div>
-    <p class="foot-note">Fuentes verificadas en septiembre de 2026: servicios públicos de IDE Energía, Vialidad MOP, SIT CONAF, SERNATUR, HDX/WorldPop e Itrend. Los datos de movilidad de telefonía existen en Chile pero no son abiertos: se consiguen por convenio.</p>
+    <p class="foot-note">Fuentes verificadas en septiembre de 2026 (servicios públicos de IDE Energía, Vialidad MOP, SIT CONAF, SERNATUR, HDX/WorldPop, Itrend). La movilidad de telefonía existe en Chile pero no es abierta: se consigue por convenio, por eso va dentro del proyecto. Detalle en “Qué otros datos podría integrar el modelo de ocurrencia”.</p>
   </div>
 </section>
 
