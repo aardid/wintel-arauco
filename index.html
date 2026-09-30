@@ -244,6 +244,15 @@
   .acceso { margin-top: 1.5rem; padding: 0.9rem 1.15rem; border: 1px solid var(--accent); border-radius: 10px;
            background: var(--accent-soft); font-size: 0.95rem; color: var(--ink-2); max-width: 62ch; }
   .acceso b { color: var(--accent-ink); }
+  .tabla { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0; background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; }
+  .tabla th, .tabla td { padding: 0.7rem 0.9rem; text-align: left; border-bottom: 1px solid var(--hairline); vertical-align: top; color: var(--ink-2); }
+  .tabla th { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .tabla td.n { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 1.15rem; color: var(--ink); white-space: nowrap; }
+  .tabla td.n.blue { color: #2a78d6; } .tabla td.n.red { color: #d03b3b; }
+  .tabla tr.hoy td { background: var(--accent-soft); }
+  .tabla tr:last-child td { border-bottom: none; }
+  .tabla td small { display: block; font-size: 0.78rem; color: var(--ink-3); margin-top: 0.15rem; }
+  .capt { font-size: 0.85rem; color: var(--ink-3); margin: 0 0 0.6rem; }
 </style>
 </head>
 <body>
@@ -502,7 +511,7 @@
     <p class="lede">Con datos públicos y 11 temporadas nunca vistas por el modelo. Cada mañana ordena las 86 comunas de Ñuble, Biobío y La Araucanía para mañana; después reparte ese pronóstico dentro de cada comuna con un mapa de 1 km de exposición humana, combustible e historia. Lo comparamos con dos referencias: la frecuencia histórica (el criterio actual) y el índice de peligro FWI, que dice cuándo hay peligro pero no dónde.</p>
     <div class="two">
       <div class="vs col">
-        <div class="stat"><div class="num blue">41 %</div><div class="lbl">de los focos de mañana caen en las 10 comunas priorizadas por Wintel</div><div class="small">frecuencia histórica (criterio actual): 35 % · índice FWI: 10 %, menos que al azar (12 %) · gana a ambos 11 de 11 temporadas · AUC 0.81 vs 0.71 (FWI 0.52)</div></div>
+        <div class="stat"><div class="num blue">41 %</div><div class="lbl">de los focos de mañana caen en las 10 comunas priorizadas por Wintel</div><div class="small">frecuencia histórica (criterio actual): 35 % · índice FWI: 10 %, menos que al azar (12 %) · gana a ambos 11 de 11 temporadas · AUC 0.81 vs 0.71 (FWI 0.52) · entrenado solo con temporadas anteriores (validación hacia adelante): gana 10 de 11, AUC 0.81</div></div>
         <div class="stat"><div class="num blue">14,6 %</div><div class="lbl">de los focos de mañana caen en los 1.000 km² priorizados hoy a 1 km</div><div class="small">historia × historia: 8,9 % · índice FWI: 3,7 % · la región tiene 69.000 km² · gana 11 de 11 temporadas</div></div>
         <div class="stat"><div class="num blue">7.800 km²</div><div class="lbl">bastan para capturar la mitad de los focos del día</div><div class="small">con el criterio histórico hacen falta 10.600 km² (un cuarto menos de territorio); con el índice FWI, 22.400 km²</div></div>
       </div>
@@ -515,6 +524,35 @@
         <figcaption>Temporada 2022–23, nunca vista por el modelo. Día de muestra: 24 de diciembre de 2022 (19 focos al día siguiente, 6 dentro de los 1.000 km² priorizados). El promedio de la temporada es 11 %; en la tormenta de fuego del 2 al 7 de febrero, con 50–100 focos diarios en toda la región, priorizar área sirve poco y el valor está en el aviso previo. Datos: NASA POWER, VIIRS S-NPP, caminos OSM, IDE Energía, WorldPop, Catastro CONAF 2024. FWI: índice canadiense calculado por comuna con ERA5 diario (aproximación del FWI de mediodía); a 1 km se reparte uniforme dentro de la comuna.</figcaption>
       </figure>
     </div>
+  </div>
+</section>
+
+<!-- 6f · Satélite vs registro oficial (30-sep-2026) -->
+<section class="slide" id="s6f">
+  <div class="slide-inner">
+    <p class="eyebrow">Satélite vs registro oficial</p>
+    <h2>Qué mide cada cifra: quema visible desde el espacio, o incendios atendidos</h2>
+    <p class="lede">Las cifras anteriores se verifican contra focos detectados por satélite, que ven solo una parte de los incendios. Ya cruzamos el pronóstico con el registro público de CONAF para saber cuánto cambia. La respuesta corta: el método funciona con las dos etiquetas, y rinde más cuando se entrena con el registro de quien atiende los incendios.</p>
+    <div class="two">
+      <div class="vs col">
+        <div class="stat"><div class="num">18 %</div><div class="lbl">de los incendios registrados por CONAF los ve el satélite</div><div class="small">79 % de los mayores de 100 ha; 6 % de los menores de 0,1 ha · mismo punto a 3 km, mismo día o el siguiente · 7 temporadas con fecha, 2018–2025</div></div>
+        <div class="stat"><div class="num">81 %</div><div class="lbl">de los focos satelitales no corresponde a un incendio registrado</div><div class="small">en pleno verano coincide la mitad o más; en abril, el 7 %: quemas agrícolas y forestales de otoño que el satélite ve y nadie atiende</div></div>
+      </div>
+      <div>
+        <p class="capt">El mismo método, evaluado contra los <b>incendios CONAF de mañana</b>: 10 comunas priorizadas, 7 temporadas fuera de muestra (86 comunas, oct–abr).</p>
+        <table class="tabla">
+          <thead><tr><th>Cómo se prioriza</th><th>Incendios de mañana capturados</th><th>Gana a la historia</th></tr></thead>
+          <tbody>
+            <tr><td>Frecuencia histórica de incendios CONAF<small>el criterio actual, con su propio registro</small></td><td class="n">38 %</td><td>—</td></tr>
+            <tr><td>Tablero actual, entrenado con focos satelitales<small>sobre focos satelitales captura 41 % vs 35 %</small></td><td class="n red">27 %</td><td>1 de 7</td></tr>
+            <tr><td>Modelo entrenado con el registro CONAF, actividad reciente satelital<small>operable hoy, sin datos nuevos</small></td><td class="n">39 %</td><td>6 de 7</td></tr>
+            <tr class="hoy"><td>Modelo entrenado con el registro CONAF y su actividad reciente<small>lo que proponemos con el registro de ARAUCO</small></td><td class="n blue">42 %</td><td>7 de 7 · hacia adelante 6 de 6</td></tr>
+            <tr><td>Igual, con el registro compartido una vez por semana<small>7 días de demora conservan la ganancia</small></td><td class="n blue">42 %</td><td>7 de 7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="foot-note"><b>Lo que pedimos:</b> un extracto semanal del registro de igniciones de ARAUCO. Con él, el modelo se entrena y se verifica contra lo que ustedes atienden, no contra lo que ve el satélite. Fuentes: puntos de incendios CONAF publicados en IDE Minagri (15 temporadas 2010–2025, 7 con fecha), FIRMS VIIRS S-NPP, ERA5. El registro público llega con meses de demora: no sirve para operar, sí para calibrar.</p>
   </div>
 </section>
 
