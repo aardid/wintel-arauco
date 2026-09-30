@@ -253,6 +253,14 @@
   .tabla tr:last-child td { border-bottom: none; }
   .tabla td small { display: block; font-size: 0.78rem; color: var(--ink-3); margin-top: 0.15rem; }
   .capt { font-size: 0.85rem; color: var(--ink-3); margin: 0 0 0.6rem; }
+  .tres { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.75rem; }
+  .tres .stat .num { font-size: 1.9rem; }
+  .tres .stat .num small { font-size: 1rem; font-weight: 600; color: var(--ink-3); margin-left: 0.35rem; }
+  .tres .stat .lbl { margin-top: 0.35rem; }
+  .tres .stat .small { margin-top: 0.6rem; line-height: 1.45; }
+  .plata { margin-top: 1.5rem; padding: 0.95rem 1.2rem; border: 1px solid var(--accent); border-radius: 10px; background: var(--accent-soft);
+           font-size: 0.98rem; color: var(--ink-2); }
+  .plata b { color: var(--accent-ink); }
 </style>
 </head>
 <body>
@@ -553,6 +561,37 @@
       </div>
     </div>
     <p class="foot-note"><b>Lo que pedimos:</b> un extracto semanal del registro de igniciones de ARAUCO. Con él, el modelo se entrena y se verifica contra lo que ustedes atienden, no contra lo que ve el satélite. Fuentes: puntos de incendios CONAF publicados en IDE Minagri (15 temporadas 2010–2025, 7 con fecha), FIRMS VIIRS S-NPP, ERA5. El registro público llega con meses de demora: no sirve para operar, sí para calibrar.</p>
+  </div>
+</section>
+
+<!-- 6g · Costo-beneficio (30-sep-2026) -->
+<section class="slide" id="s6g">
+  <div class="slide-inner">
+    <p class="eyebrow">Costo-beneficio</p>
+    <h2>Qué vale anticipar el dónde: tres miradas sobre los mismos datos</h2>
+    <p class="lede">Las mismas predicciones fuera de muestra de la lámina anterior, contra los incendios CONAF de las 7 temporadas con fecha y su superficie final. Nada se reentrena: es el mismo pronóstico mirado con la lente del costo. Todo es valor <b>adicional sobre el criterio actual</b>, la frecuencia histórica, porque esos incendios ya fueron atendidos con la respuesta de hoy.</p>
+    <div class="tres">
+      <div class="stat">
+        <span class="tag">1 · Valor económico potencial</span>
+        <div class="num blue">45 %<small>vs 42 %</small></div>
+        <div class="lbl">del ahorro máximo posible se captura cubriendo cada día las comunas que indica el pronóstico</div>
+        <div class="small">Método de Richardson: cada día se cubren k comunas a un costo C por comuna; cada incendio en una comuna sin cubrir cuesta L. Cada estrategia elige su mejor k según C/L. 0 = actuar sin pronóstico; 100 = pronóstico perfecto. El modelo supera a la historia para todo C/L entre 1 % y 100 %; la diferencia en el máximo es +3,3 puntos (IC 95 %: 1,9–5,5).</div>
+      </div>
+      <div class="stat">
+        <span class="tag">2 · Hectáreas, no solo focos</span>
+        <div class="num blue">35 %<small>vs 28 %</small></div>
+        <div class="lbl">de la superficie que terminará quemando lo que arranca mañana cae en las comunas priorizadas hoy</div>
+        <div class="small">La misma captura de la lámina anterior, ponderada por el tamaño final de cada incendio. En número de incendios la ventaja es de 4 puntos (40 vs 36 %); en hectáreas, de 7 (IC 95 %: 4,8–9,1). Para los incendios que escapan (10 ha o más): 34 % vs 26 %. La historia sabe dónde arrancan muchos incendios, no dónde arrancan los grandes.</div>
+      </div>
+      <div class="stat">
+        <span class="tag">3 · Incendios grandes con brigadas cerca</span>
+        <div class="num blue">+31<small>por temporada</small></div>
+        <div class="lbl">incendios de 10 ha o más habrían tenido recursos preposicionados con el modelo y no con la historia</div>
+        <div class="small">IC 95 %: 17–47, de 357 escapados por temporada. Su superficie final: 6.300 ha por temporada, el 7 % del área de los escapados. Si tener brigadas cerca reduce el escape en un 10, 25 o 50 %, el área evitada es de 630, 1.580 o 3.150 ha por temporada.</div>
+      </div>
+    </div>
+    <p class="plata"><b>En plata.</b> A US$3.000 por hectárea, la pérdida por hectárea que ARAUCO reportó en 2017, cada 1.000 ha evitadas son US$3 millones. El servicio se paga con unas 50 a 60 hectáreas de patrimonio evitadas al año. La cifra del área es la menos firme: la dominan uno o dos megaincendios por década, y las hectáreas son de toda la región, no solo del patrimonio; la cuenta de incendios (+31) es la robusta.</p>
+    <p class="foot-note">Supuestos: costo igual para cubrir cualquier comuna; en la mirada 1 todos los incendios valen lo mismo (la 2 es su complemento por hectáreas); la reducción del escape por preposicionar es un parámetro, no un dato (la literatura de primer ataque sitúa el tiempo de respuesta entre sus principales determinantes). Fuente: predicciones LOSO contra registro CONAF, 86 comunas, 7 temporadas; método de valor económico de Richardson (2000).</p>
   </div>
 </section>
 
